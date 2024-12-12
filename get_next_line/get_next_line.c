@@ -6,7 +6,7 @@
 /*   By: tsaeed <tsaeed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 21:30:51 by tsaeed            #+#    #+#             */
-/*   Updated: 2024/12/02 20:39:03 by tsaeed           ###   ########.fr       */
+/*   Updated: 2024/12/03 00:37:42 by tsaeed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -31,6 +31,8 @@ char	*ft_read_file(int fd, char *keep)
 		}
 		temp[rd] = '\0';
 		keep = ft_strjoin(keep, temp);
+                if(!keep)
+                        break;
 	}
 	free(temp);
 	return (keep);
@@ -104,6 +106,12 @@ char	*get_next_line(int fd)
 	if (!keep)
 		return (NULL);
 	line = ft_extract_line(keep);
+        if(!line)
+        {
+                free(keep);
+                keep = NULL;
+                return (NULL);
+        }
 	keep = ft_delete_read(keep);
 	return (line);
 }

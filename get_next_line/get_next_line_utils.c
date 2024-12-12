@@ -6,7 +6,7 @@
 /*   By: tsaeed <tsaeed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 22:19:37 by tsaeed            #+#    #+#             */
-/*   Updated: 2024/11/30 23:42:29 by tsaeed           ###   ########.fr       */
+/*   Updated: 2024/12/02 23:15:57 by tsaeed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1)
 	{
 		s1 = (char *)malloc(1 * sizeof(char));
+                if(!s1)
+                        return (NULL);
 		s1[0] = '\0';
 	}
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
 	s3 = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!s3)
